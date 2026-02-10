@@ -8,3 +8,10 @@ dependencies = []
 
 [project.scripts]
 gendiff = "hexlet_python_package.scripts.gendiff:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["gendiff"]
