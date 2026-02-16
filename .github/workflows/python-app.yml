@@ -21,3 +21,13 @@ jobs:
 
       - name: Run linter
         run: make lint
+      
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v2
+        with:
+          args: >
+            -Dsonar.organization=${{ secrets.SONAR_ORG }}
+            -Dsonar.projectKey=${{ github.repository }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
