@@ -23,10 +23,12 @@ jobs:
       - name: Run linter
         run: make lint
       
-      - name: SonarQube Scan
+      - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://sonarcloud.io
-
+        with:
+          args: >
+            -Dsonar.projectKey=d4nich
+            -Dsonar.organization=d4nich
 
