@@ -23,8 +23,8 @@ jobs:
       - name: Run linter
         run: make lint
 
-      - name: Run tests
-        run: uv run pytest
+      - name: Run tests with coverage
+        run: uv run pytest --cov=gendiff --cov-report=xml
       
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v2
