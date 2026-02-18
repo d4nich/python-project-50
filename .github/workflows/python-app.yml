@@ -24,7 +24,7 @@ jobs:
         run: make lint
 
       - name: Run tests with coverage
-        run: uv run pytest --cov=gendiff --cov-report=xml
+        run: uv run pytest --cov --cov-report=xml
       
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v2
@@ -33,3 +33,4 @@ jobs:
         with:
           args: >
             -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.projectBaseDir=.
