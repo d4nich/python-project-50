@@ -1,3 +1,5 @@
+import json
+
 from gendiff import generate_diff
 
 
@@ -125,3 +127,17 @@ Property 'group3' was added with value: [complex value]"""
     result = generate_diff("fixtures/file1.json", "fixtures/file2.json", 
                            "plain")
     assert result == expected
+
+
+def test_json_format():
+    result = generate_diff(
+        "fixtures/file1.json",
+        "fixtures/file2.json",
+        "json"
+    )
+
+    parsed = json.loads(result)
+
+    assert isinstance(parsed, list)
+    assert parsed[0]["key"] == "common"
+    assert parsed[0]["type"] == "nested"
